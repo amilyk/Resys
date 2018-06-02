@@ -1,6 +1,6 @@
 __author__ = 'fanshen.fs'
 
-import numpy
+import numpy as np
 
 def get_AP(k,ideal,test):
     """
@@ -38,3 +38,11 @@ def get_MAP(k,ideal_map,test_map):
         return 0
     return accumulation/len(ideal_map)
 
+def rmse_Score(R,nR,N,M,e = 0,cnt = 0):
+    for i in xrange(N):
+        for j in xrange(M):
+            if R[i][j] > 0:
+                cnt += 1
+                e += pow(R[i][j] - nR[i][j], 2)
+    e = np.sqrt(e/cnt)
+    return e
