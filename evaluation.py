@@ -2,7 +2,7 @@ __author__ = 'fanshen.fs'
 
 import numpy as np
 
-def get_AP(k,ideal,test):
+def get_AP(k,ideal,test):#top k ideal实际数据集 test:predict
     """
         compute AP
     """

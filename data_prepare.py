@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 __author__ = 'kangxun'
 
 import numpy as np
 
-# -*- coding: utf-8 -*-
+
 def loadData(path,subpath,subpath2 = None):
     prefs = {}
     for line in open(path + subpath):
@@ -23,9 +24,8 @@ def loadData(path,subpath,subpath2 = None):
 
 #def splitdata():
 
-prefs,movies = loadData('ml-100k','/u.item')
+prefs = loadData('ml-100k','/u.data')
 #prefs,movies = loadData('data','/ratings.dat')
-#print prefs['87']
 
 # Split
 training_ratio = 0.8
@@ -37,7 +37,7 @@ f_test = open("data/test.csv",'wb')
 
 for user in prefs:
     for item in prefs[user]:
-        p = np.random.rand()
+        p = np.random.random() #0-1随机数 rand->random
         s = str(user)+","+str(item)+","+str(prefs[user][item])+"\n"
         if (p < training_ratio):
             Train.setdefault(user,{})

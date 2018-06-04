@@ -69,11 +69,11 @@ def matrix_factorization(R,P,Q,K,N,M,steps=5000,alpha=0.0002,beta=0.02):#改成�
             break
     return P,Q.T
 
-def recommend(data,nR,N,M,top=1):#根据预测后的评分,对每一个 user 推荐没评分电影中预测评分最高的 top 电影
+def recommend(R,nR,N,M,top=1):#根据预测后的评分,对每一个 user 推荐没评分电影中预测评分最高的 top 电影
     for i in xrange(N):#user
         score = {}
         for j in xrange(M):#movie
-            if data[i][j] == 0:
+            if R[i][j] == 0:
                 score[str(j)] = nR[i][j]
         score = sorted(score.items(),key = lambda x:x[1],reverse = True)
         score = dict(score)
